@@ -66,6 +66,7 @@ const actions = {
     if (state.name) {
       await loginAPI.logout()
     }
+    removeToken()
     // 提交重置用户信息的mutation
     commit('RESET_USER')
   },

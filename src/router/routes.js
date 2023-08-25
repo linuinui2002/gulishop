@@ -45,15 +45,72 @@ export const constantRoutes = [
 
   {
     path: '/',
-    component: Layout,
+    // component: Layout,
+    component: () => import('@/layout/index.vue'),
+
     redirect: '/dashboard',
     children: [{
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard'),
       meta: { title: '首页', icon: 'dashboard' }
-    }]
+    },
+    
+  ]
   },
   // 任意路由
-  { path: '*', redirect: '/404', hidden: true }
+  { path: '*', redirect: '/404', hidden: true },
+
+
+  {
+    path: "/acl",
+    name: "Acl",
+    component: () => import("@/layout/index.vue"),
+    redirect: "/acl/user/list",
+    meta: {
+      title: "权限管理",
+      icon: "ele-Setting",
+    },
+    children: [
+      {
+        name: "User",
+        path: "/acl/user/list",
+        component: () => import("@/views/acl/user/index.vue"),
+        meta: {
+          title: "用户管理",
+        },
+      },
+      {
+        name: "Role",
+        path: "/acl/role/list",
+        component: () => import("@/views/acl/role/index.vue"),
+        meta: {
+          title: "角色管理",
+        },
+      },
+      // {
+      //   name: "RoleAuth",
+      //   path: "/acl/role/auth",
+      //   component: () => import("@/views/acl/role/roleAuth.vue"),
+      //   meta: {
+      //     title: "角色管理",
+      //     hidden: true,
+      //     activeMenu: "/acl/role/list",
+      //   },
+      // },
+      {
+        name: "Permission",
+        path: "/acl/permission/list",
+        component: () => import("@/views/acl/permission/index.vue"),
+        meta: {
+          title: "菜单管理",
+        },
+      },
+    ],
+  },
+
 ]
+
+// export const allAsyncRoutes=[
+ 
+// ]
