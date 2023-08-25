@@ -23,3 +23,34 @@ export const reqPermission=()=>{
 export const reqAddUser=(userInfo)=>{
   return request.post(`/admin/acl/user/save`,userInfo)
 }
+
+export const reqDeleteArr=(arr)=>{
+  return request.post(`/admin/acl/user/batchRemove`,arr)
+}
+
+export const reqAllocation=(id)=>{
+  return request.get(`/admin/acl/user/toAssign/${id}`)
+}
+// http://localhost:3000/app-dev/admin/acl/user/update
+
+export const reqPutUserInfo=(data)=>{
+  return request.put(`/admin/acl/user/update`,data)
+}
+
+export const reqDelete=(id)=>{
+  return request.delete(`/admin/acl/user/remove/${id}`)
+}
+
+
+// 角色管理
+
+// /admin/acl/role/save
+
+export const addRole=(data)=>{
+  return request.post(`/admin/acl/role/save`,data)
+}
+
+export const deleteRole=(id)=>{
+  return request.post(`/admin/acl/role/save`,id)
+}
+
